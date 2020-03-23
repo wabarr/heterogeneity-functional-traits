@@ -17,19 +17,23 @@ traits_occs <- traits_occs %>% dplyr::filter(bodymass >= 500)
 #                                               G =  c("G", "G-R")
 # )
 
-## format data for use in FD package - traits
+## read in Kissling et al. 2014 MammalDiet traits 
+mammalDIET <- read.csv("DATA/selected_mammalDiet_Traits_for_heterogenetiy_paper.csv", stringsAsFactors = FALSE)
 
+
+## format data for use in FD package - traits
 
 traits <- 
   traits_occs %>%
-  dplyr::select(taxon, locomotor_rowan, trophic_rowan, bodymass) %>%
+  left_join(mammalDIET, by=c("taxon" = "joinName")) %>%
+  dplyr::select(taxon, locomotor_rowan, bodymass, Vertebrate, Invertebrate, Fish, Seed, Fruit, Root, Woody, Herbaceous, Nectar) %>%
   distinct()
+
 
 class(traits) <- "data.frame"
 row.names(traits) <- traits$taxon
 traits$taxon <- NULL
 traits$locomotor_rowan <- as.factor(traits$locomotor_rowan)
-traits$trophic_rowan <- as.factor(traits$trophic_rowan)
 
 ## format data for use in FD package - occurrences
 
@@ -71,8 +75,7 @@ outputFRIC$shortName <- rownames(outputFRIC)
 richness <- traits_occs %>% group_by(shortName) %>% 
   summarize(
     nLocomotor = length(unique(locomotor_rowan)),
-    nTrophic = length(unique(trophic_rowan))
-  )
+    nTrophic = length(unique(trophic_rowan)))
 
 outputFRIC <- left_join(outputFRIC, richness)
 

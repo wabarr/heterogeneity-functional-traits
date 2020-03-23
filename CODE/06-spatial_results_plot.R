@@ -63,11 +63,11 @@ CV_wc <- africa_outline +
   labs(color="CV_wc")
 
 nTrophic <- africa_outline + 
-  geom_point(data=sites, aes(x=longitude, y=latitude, color=nTrophic), size=4, alpha=0.7) + 
-  coord_map() + 
-  scale_color_distiller(palette = "Spectral") + 
-  labs(title="Trophic trait types") + 
-  labs(color="nTrophic")
+   geom_point(data=sites, aes(x=longitude, y=latitude, color=nTrophic), size=4, alpha=0.7) + 
+   coord_map() + 
+   scale_color_distiller(palette = "Spectral") + 
+   labs(title="Trophic trait types") + 
+   labs(color="nTrophic")
 
 nLocomotor <- africa_outline + 
   geom_point(data=sites, aes(x=longitude, y=latitude, color=nLocomotor), size=4, alpha=0.7) + 

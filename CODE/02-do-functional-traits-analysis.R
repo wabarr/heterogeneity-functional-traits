@@ -77,6 +77,6 @@ richness <- traits_occs %>% group_by(shortName) %>%
 
 outputFRIC <- left_join(outputFRIC, richness)
 
-write.table(outputFRIC, file = "~/Dropbox/heterogeneity_funcric_JHE/JHE_revise_resubmit/Analysis/DATA//FunctionalDiversity_COMBINED_Rowan_Lintulaakso.csv", row.names = F, sep=",")
+write.table(outputFRIC, file = "~/Dropbox/heterogeneity_funcric_JHE/JHE_revise_resubmit/heterogeneity-functional-traits/DATA//FunctionalDiversity_COMBINED_Rowan_Lintulaakso.csv", row.names = F, sep=",")
 
 

@@ -4,9 +4,10 @@ Run the lines of code below in the R terminal to run all analyses. This code ass
 
 ```
 analysis_dir <- "~/Dropbox/heterogeneity_funcric_JHE/JHE_revise_resubmit/heterogeneity-functional-traits/"
+## set this variable to the location of the folder containing the CODE folder
 setwd(analysis_dir)
 lapply(
-  list.files(".", pattern="R$", full=T),
+  list.files("./CODE", pattern="R$", full=T),
   FUN=source
 )
 ```

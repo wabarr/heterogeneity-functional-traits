@@ -98,6 +98,6 @@ fdiv<-ggplot(forgg, aes(trait1, trait2)) +
   labs(x="PCoA Axis 1", y="PCoA Axis 2", title="Functional divergence (FDiv)\nsummed deviations divided by\nsummed absolute deviations")
 print(fdiv)
 
-pdf("./FIGURES/Fig1_combined_fdiv_fric_fdis", width=6, height=3)
+pdf("./FIGURES/Fig1_combined_fdiv_fric_fdis.pdf", width=6, height=3)
 gridExtra::grid.arrange(fric,fdis, fdiv, ncol=3, nrow=1)
 dev.off()

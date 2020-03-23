@@ -10,14 +10,14 @@ func$log_patchDensity <- log10(func$nPatches/func$area)
 
 scale_200 <- ggpairs(
   dplyr::filter(func, analysis_scale==200), 
-  columns = c(4, 15, 17, 20, 21, 26, 27, 29, 32), 
+  columns = c(4, 15, 17, 19, 20, 21, 26, 27, 29, 32), 
   title="Spatial Grain = 200 m"
   )
 ggsave("./FIGURES/SOM_Fig1_plots.pdf", plot = scale_200, width=9, height=9)
 
 scale_5000 <- ggpairs(
   dplyr::filter(func, analysis_scale==5000), 
-  columns = c(4, 15, 17, 20, 21, 26, 27, 29, 32), 
+  columns = c(4, 15, 17, 19, 20, 21, 26, 27, 29, 32), 
   title="Spatial Grain = 5 km"
 )
 ggsave("./FIGURES/SOM_Fig2_plots.pdf", plot = scale_5000, width=9, height=9)

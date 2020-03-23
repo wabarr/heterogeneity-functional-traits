@@ -5,6 +5,18 @@ traits_occs <- read.table("./DATA/combined_lintulaakso_rowan_traits_occurrences.
 traits_occs <- traits_occs %>% dplyr::filter(bodymass >= 500)
 
 
+#simplify trophic levels
+# traits_occs$trophic_rowan <- forcats::fct_collapse(traits_occs$trophic_rowan,
+#                                               MF = c("MF","MF-B","MF-FG","MF-G"),
+#                                               B =  c("B"),
+#                                               F =  c("F", "FB", "FG", "FI", "FL"),
+#                                               O =  c("OM","OM-C","OM-FL","OM-I"),
+#                                               C =  c("C", "CB", "CI"),
+#                                               R =  c("R"),
+#                                               I =  c("I"),
+#                                               G =  c("G", "G-R")
+# )
+
 ## format data for use in FD package - traits
 
 
@@ -18,19 +30,6 @@ row.names(traits) <- traits$taxon
 traits$taxon <- NULL
 traits$locomotor_rowan <- as.factor(traits$locomotor_rowan)
 traits$trophic_rowan <- as.factor(traits$trophic_rowan)
-# traits$bodymass <- log10(traits$bodymass)
-# 
-
-traits$trophic_rowan <- forcats::fct_collapse(traits$trophic_rowan,
-  MF = c("MF","MF-B","MF-FG","MF-G"),
-  B =  c("B"),
-  F =  c("F", "FB", "FG", "FI", "FL"),
-  O =  c("OM","OM-C","OM-FL","OM-I"),
-  C =  c("C", "CB", "CI"),
-  R =  c("R"),
-  I =  c("I"),
-  G =  c("G", "G-R")
-  )
 
 ## format data for use in FD package - occurrences
 
@@ -62,10 +61,10 @@ if(!length(complete.cases(traits))==nrow(traits)) rm(traits)
 ## Calculate distance based functional diversity metrics
 
 
-fd_unordered_factors <- FD::dbFD(x=traits, a=occ_DF, corr="lingoes")
-fd_unordered_factors
+fd <- FD::dbFD(x=traits, a=occ_DF, corr="lingoes")
+fd
 
-outputFRIC <- do.call(data.frame,fd_unordered_factors)
+outputFRIC <- do.call(data.frame,fd)
 outputFRIC$shortName <- rownames(outputFRIC)
 
 ## count functional types

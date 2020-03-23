@@ -19,6 +19,10 @@ nested_func <- mutate(nested_func,
                       FDiv_CVwc_model =  map(data, function(df) lm(scale(FDiv) ~ scale(cv_WC) + scale(nbsp) , data=df)),
                       FDiv_patchRichness_model =  map(data, function(df) lm(scale(FDiv) ~ scale(patchRichness) + scale(nbsp) , data=df)),
                       
+                      FEve_patchDensity_model = map(data, function(df) lm(scale(FEve) ~ scale(log_patchDensity) + scale(nbsp) , data=df)),
+                      FEve_CVwc_model =  map(data, function(df) lm(scale(FEve) ~ scale(cv_WC) + scale(nbsp) , data=df)),
+                      FEve_patchRichness_model =  map(data, function(df) lm(scale(FEve) ~ scale(patchRichness) + scale(nbsp) , data=df)),
+                      
                       FRic_patchDensity_model = map(data, function(df) lm(scale(FRic) ~ scale(log_patchDensity) + scale(nbsp) , data=df)),
                       FRic_CVwc_model =  map(data, function(df) lm(scale(FRic) ~ scale(cv_WC) + scale(nbsp) , data=df)),
                       FRic_patchRichness_model =  map(data, function(df) lm(scale(FRic) ~ scale(patchRichness) + scale(nbsp) , data=df)),

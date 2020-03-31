@@ -61,6 +61,6 @@ highDensity <-
   labs(title="B: patchRichness=3, high patchDensity")
 print(highDensity)
 
-pdf(file = "./FIGURES/Fig3_patches.pdf", width=6, height = 3)
+pdf(file = "./FIGURES/Fig2_patches.pdf", width=6, height = 3)
 gridExtra::grid.arrange(lowDensity, highDensity, ncol=2)
 dev.off()

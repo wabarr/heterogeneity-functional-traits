@@ -71,7 +71,7 @@ convertLocomotorTraits <- function(rowID) {
 }
 
 newTraitsDF <- do.call(rbind, lapply(1:nrow(traits),FUN=convertLocomotorTraits))
-traits <-  dplyr::select(newTraitsDF, taxon, Vertebrate, Invertebrate, Fish, Seed, Fruit, Root, Woody, Herbaceous, Nectar, aquatic, terrestrial, fossorial, arboreal) 
+traits <-  dplyr::select(newTraitsDF, taxon, bodymass, Vertebrate, Invertebrate, Fish, Seed, Fruit, Root, Woody, Herbaceous, Nectar, aquatic, terrestrial, fossorial, arboreal) 
 
 #replace zeroes with 4s, to make an ordinal integer variable
 traits$Vertebrate[traits$Vertebrate==0] <- 4

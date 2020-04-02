@@ -32,7 +32,7 @@ nested_func <-
   group_by(analysis_scale) %>% 
   nest() %>%
   arrange(analysis_scale)
-rm(func)
+
 nested_func <- mutate(nested_func, 
                       FDiv_patchDensity_model = map(data, function(theDF) lm(scale_FDiv ~ scale_log_patchDensity + scale_nbsp + scale_log_area , data=theDF)),
                       FDiv_CVwc_model =  map(data, function(theDF) lm(scale_FDiv ~ scale_CV_wc + scale_nbsp + scale_log_area , data=theDF)),
@@ -182,3 +182,4 @@ system(
           )
 )
 unlink(outputTableLocation)
+
